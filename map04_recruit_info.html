@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+<title>일해요!</title>
+<link href="http://image.club5678.com/imgs/@test/test_nanum.css" rel="stylesheet" type="text/css">
+<link href="css/jquery.mobile.reset.css" rel="stylesheet" type="text/css">
+<link href="css/ilh_default.css" rel="stylesheet" type="text/css">
+<link href="css/ilh_map.css" rel="stylesheet" type="text/css">
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquerymobile/1.4.5/jquery.mobile.min.js"></script>
+<script src="js/ilh_design.js"></script>
+</head>
+
+<body>
+
+<div class="wrap_location_map">
+	<!-- 공통 헤더 -->
+    <div id="header" class="header_fixed grd_main">
+        <h1 class="sub_header2">내주변채용정보</h1>
+        <div class="header_btn btn_clse">
+            <a href="#">닫기</a>
+        </div>
+    </div>
+    <!-- // 공통 헤더 -->
+    <!-- 다음 지도 -->
+    <div id="map" class="fix3"></div>
+	<div class="info_wrap">
+    	<h2 class="info01 ft_wt700">채용정보 : <span>7,000</span> 건</h2>
+    </div>
+    <a href="#"><div class="slct_job grd_divide ft_wt700 bs_txt_base"><div class="box_s">직업분야 : 전체</div></div></a>
+    <a href="#"><img src="http://image.club5678.com/imgs/ilheayo_job/img01/btn_location_m.png" class="location_m" width="70" height="28" alt="내위치지정" /></a>
+    <div class="zoom_control">
+        <span onclick="zoomIn()">확대</span>
+        <span onclick="zoomOut()">축소</span>
+    </div>
+    <!-- // 다음 지도 -->
+</div>
+
+<!-- 광고 삽입 부분
+<div id="ad_zone">
+<a href="#">
+	<p style="font-size:18px; font-weight:700; color:#fff; text-align:center;">광고영역</p>
+</a>
+</div>
+<!--광고 삽입 부분 -->
+
+</body>
+<script type="text/javascript" src="http://apis.daum.net/maps/maps3.js?apikey=f717050d08c08642e96da8488274a0d0"></script><!-- 임시API 키번호 -->
+<script type="text/javascript">
+var mapContainer = document.getElementById('map'), // 지도를 표시할 div
+    mapOption = {
+        center: new daum.maps.LatLng(37.54699, 127.09598), // 지도의 중심좌표
+        level: 2 // 지도의 확대 레벨
+    };
+
+var map = new daum.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
+
+// 마커를 표시할 위치와 title 객체 배열입니다
+var positions = [
+    {
+        content: '<div class="customoverlay">' + '<a href="#">' + '<span class="title">장소1입니댜</span>' + '</a>' + '</div>',
+        latlng: new daum.maps.LatLng(37.54699, 127.09598)
+    },
+    {
+        content: '<div class="customoverlay">' + '<a href="#">' + '<span class="title">장소2에요</span>' + '</a>' + '</div>',
+        latlng: new daum.maps.LatLng(37.54789, 127.09605)
+    },
+    {
+        content: '<div class="customoverlay">' + '<a href="#">' + '<span class="title">장소3</span>' + '</a>' + '</div>',
+        latlng: new daum.maps.LatLng(37.54689, 127.09488)
+    },
+    {
+        content: '<div class="customoverlay">' + '<a href="#">' + '<span class="title">장소4다</span>' + '</a>' + '</div>',
+        latlng: new daum.maps.LatLng(37.54679, 127.095280)
+    }
+];
+
+// 마커 이미지의 이미지 주소입니다
+var imageSrc = "http://image.club5678.com/imgs/ilheayo_job/img01/ico_map_location.png"
+	imageOption = {offset: new daum.maps.Point(43, 45)}; // 마커이미지의 옵션입니다. 마커의 좌표와 일치시킬 이미지 안에서의 좌표를 설정합니다.
+
+for (var i = 0; i < positions.length; i ++) {
+
+    // 마커 이미지의 이미지 크기 입니다
+    var imageSize = new daum.maps.Size(39, 41);
+
+    // 마커 이미지를 생성합니다
+    var markerImage = new daum.maps.MarkerImage(imageSrc, imageSize, imageOption);
+
+    // 마커를 생성합니다
+    var marker = new daum.maps.Marker({
+        map: map, // 마커를 표시할 지도
+        position: positions[i].latlng, // 마커를 표시할 위치
+        image : markerImage // 마커 이미지
+    });
+
+	// 커스텀 오버레이를 생성합니다
+	var customOverlay = new daum.maps.CustomOverlay({
+		map: map,
+		position: positions[i].latlng,
+		content : positions[i].content,
+		yAnchor: 0.5
+	});
+}
+
+// 지도 확대, 축소 컨트롤에서 확대 버튼을 누르면 호출되어 지도를 확대하는 함수입니다
+function zoomIn() {
+    map.setLevel(map.getLevel() - 1);
+}
+
+// 지도 확대, 축소 컨트롤에서 축소 버튼을 누르면 호출되어 지도를 확대하는 함수입니다
+function zoomOut() {
+    map.setLevel(map.getLevel() + 1);
+}
+</script>
+</html>

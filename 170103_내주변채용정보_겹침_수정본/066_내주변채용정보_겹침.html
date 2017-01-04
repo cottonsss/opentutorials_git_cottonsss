@@ -1,0 +1,218 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+<title>일해요!</title>
+<link href="http://image.club5678.com/imgs/@test/test_nanum.css" rel="stylesheet" type="text/css">
+<link href="css/jquery.mobile.reset.css" rel="stylesheet" type="text/css">
+<link href="css/ilh_default.css" rel="stylesheet" type="text/css">
+<link href="css/ilh_map.css" rel="stylesheet" type="text/css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquerymobile/1.4.5/jquery.mobile.min.js"></script>
+<script src="js/ilh_design.js"></script>
+</head>
+<body>
+<div class="wrap_location_map">
+    <!-- 공통 헤더 -->
+    <div id="header" class="header_fixed grd_main">
+        <h1 class="sub_header2">내주변채용정보</h1>
+        <div class="header_btn btn_clse" id="btnClose">
+            <a href="javascript:void(0);">닫기</a>
+        </div>
+    </div>
+    <!-- // 공통 헤더 -->
+    <!-- 다음 지도 -->
+    <div id="map" class="fix3"></div>
+	<div class="info_wrap">
+    	<h2 class="info01 ft_wt700">채용정보 : <span>7,000</span> 건</h2>
+    </div>
+    <a href="javascript:void(0);" id="openJobType"><div class="slct_job grd_divide ft_wt700 bs_txt_base"><div class="box_s">직업분야 : <span id="jobType">전체</span></div></div></a>
+    <a href="javascript:void(0);"><img src="http://image.club5678.com/imgs/ilheayo_job/img01/btn_location_m.png" class="location_m" id="myPoint" width="70" height="28" alt="내위치지정" /></a>
+    <div class="zoom_control">
+        <span onclick="$.onClickZoomIn()">확대</span>
+        <span onclick="$.onClickZoomOut()">축소</span>
+    </div>
+    <!-- // 다음 지도 -->
+    <!-- // 오버레이선택 하단 정보-->
+    <div id="container">
+        <!-- // 특정정보선택 -->
+    	<div class="box_all_info" id="detailRecruitInfo">
+            <div class="choice_info_1" id="btnDetailRecruitInfoClose">
+                <a href="javascript:void(0);"><img src="http://image.club5678.com/imgs/ilheayo_job/img01/btn_close_c.png" class="c_choice" width="35" height="25" alt="닫기" /></a>
+            </div>
+            <ul class="content_list">
+                <li class="list_card">
+                    <div class="list_photo_wrap">
+                        <a href="#">
+                            <div class="photo_clip">
+                                <img src="http://image.club5678.com/imgs/ilheayo_job/img01/img_001.jpg" class="mem_photo">
+                            </div>
+                        </a>
+                        <span class="badge"><span>10</span></span>
+                        <span class="job_offer_badge">인력구함</span>
+                    </div>
+                    <div class="list_profile">
+                        <a href="#">
+                            <div class="top_line">
+                                <p class="list_title">뷔페 서빙 구합니다</p>
+                                <span class="help_badge">급구</span>
+                                <span class="wt_time ft_wt700">3분전</span>
+                            </div>
+                            <div class="mid_line">
+                                <span class="list_txt">
+                                    <strong class="company_color">[오뚜기뷔페]</strong>
+                                    오뚜기 뷔페입니다. 별로 힘들지 않습니다. 오늘내로 연락주세요.오뚜기 뷔페입니다. 별로 힘들지 않습니다. 오늘내로 연락주세요.오뚜기 뷔페입니다. 별로 힘들지 않습니다. 오늘내로 연락주세요.
+                                </span>
+                            </div>
+                            <div class="bot_line">
+                                <ul>
+                                    <li class="list_money"><span class="day_badge">일당</span> <span class="ft_wt900">120,000원</span></li>
+                                    <li class="list_field">단순 > 서빙</li>
+                                </ul>
+                                <ul>
+                                    <li class="list_roca"><span class="roca_span">지역</span> <span>경남 > 창원시마산을구</span></li>
+                                    <li class="list_dist">254.6km</li>
+                                </ul>
+                            </div>
+                        </a>
+                    </div>
+                </li>
+            </ul>
+    	</div>
+        <!-- // 특정정보선택 -->
+        <!-- // 특정정보선택(여러정보겹침) -->
+        <div class="box_all_info" id="recruitList">
+        	<div class="choice_info_1" id="btnRecruitListClose">
+       			<a href="javascript:void(0);"><img src="http://image.club5678.com/imgs/ilheayo_job/img01/btn_close_c.png" class="c_choice" width="35" height="25" alt="닫기" /></a>
+        	</div>
+       		<div class="info_txt ft_wt700">해당 위치에 총 12개의 정보가 있습니다.</div>
+            <div id="touchSlider">
+            	<ul class="slider_u">
+                	<!-- 슬라이드 -->
+                	<li class="slider_l">
+                        <ul class="info_list1">
+                            <li class="info_tit ft_wt700 bs_txt_base"><span>[울트라건설]</span>3일 동안 비계공 구합니다</li>
+                            <li class="info_btn ft_wt700"><a href="#"><div class="btn_more btn_grd_blue">자세히</div></a> </li>
+                        </ul>
+                        <ul class="info_list1">
+                            <li class="info_tit ft_wt700 bs_txt_base"><span>[울트라건설]</span>3일 동안 비계공 구합니다</li>
+                            <li class="info_btn ft_wt700"><a href="#"><div class="btn_more btn_grd_blue">자세히</div></a></li>
+                        </ul>
+                        <ul class="info_list1">
+                            <li class="info_tit ft_wt700 bs_txt_base"><span>[울트라건설]</span>3일 동안 비계공 구합니다</li>
+                            <li class="info_btn ft_wt700"><a href="#"><div class="btn_more btn_grd_blue">자세히</div></a></li>
+                        </ul>
+                        <ul class="info_list1">
+                            <li class="info_tit ft_wt700 bs_txt_base"><span>[울트라건설]</span>3일 동안 비계공 구합니다</li>
+                            <li class="info_btn ft_wt700"><a href="#"><div class="btn_more btn_grd_blue">자세히</div></a></li>
+                        </ul>
+                    </li>
+                    <!-- // 슬라이드 -->
+                    <!-- 슬라이드 -->
+                	<li class="slider_l">
+                        <ul class="info_list1">
+                            <li class="info_tit ft_wt700 bs_txt_base"><span>[울트라건설]</span>3일 동안 비계공 구합니다</li>
+                            <li class="info_btn ft_wt700"><a href="#"><div class="btn_more btn_grd_blue">자세히</div></a> </li>
+                        </ul>
+                        <ul class="info_list1">
+                            <li class="info_tit ft_wt700 bs_txt_base"><span>[울트라건설]</span>3일 동안 비계공 구합니다</li>
+                            <li class="info_btn ft_wt700"><a href="#"><div class="btn_more btn_grd_blue">자세히</div></a></li>
+                        </ul>
+                        <ul class="info_list1">
+                            <li class="info_tit ft_wt700 bs_txt_base"><span>[울트라건설]</span>3일 동안 비계공 구합니다</li>
+                            <li class="info_btn ft_wt700"><a href="#"><div class="btn_more btn_grd_blue">자세히</div></a></li>
+                        </ul>
+                        <ul class="info_list1">
+                            <li class="info_tit ft_wt700 bs_txt_base"><span>[울트라건설]</span>3일 동안 비계공 구합니다</li>
+                            <li class="info_btn ft_wt700"><a href="#"><div class="btn_more btn_grd_blue">자세히</div></a></li>
+                        </ul>
+                    </li>
+                    <!-- // 슬라이드 -->
+                </ul>
+            </div>
+            <ul class="info_list1 list_p">
+                <li class="prev_btn ft_wt700 bs_txt_base" id="recruitListPrev"><a href="javascript:void(0);"><div class="btn_grd_white">
+                    <img src="http://image.club5678.com/imgs/ilheayo_job/img01/ico_prev.png" width="8" height="12" alt="이전" /> 이전</div></a>
+                </li>
+                <li class="next_btn ft_wt700 bs_txt_base" id="recruitListNext"><a href="javascript:void(0);"><div class="btn_grd_white">
+                    다음 <img src="http://image.club5678.com/imgs/ilheayo_job/img01/ico_next.png" width="8" height="12" alt="다음" /></div></a>
+                </li>
+            </ul>
+    	</div>
+        <!-- // 특정정보선택(여러정보겹침) -->
+    </div>
+    <!-- // 오버레이선택 하단 정보 -->
+
+</div>
+</body>
+<script type="text/javascript" src="http://apis.daum.net/maps/maps3.js?apikey=fa74ae65d82384e802e6860063dc82cd "></script><!-- 임시API 키번호 -->
+<script type="text/javascript">
+var mapContainer = document.getElementById('map'), // 지도를 표시할 div
+    mapOption = {
+        center: new daum.maps.LatLng(33.450701, 126.570667), // 지도의 중심좌표
+        level: 2 // 지도의 확대 레벨
+    };
+
+var map = new daum.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
+
+// 마커를 표시할 위치와 title 객체 배열입니다
+var positions = [
+    {
+        content: '<div class="customoverlay">' + '<a href="#">' + '<span class="title">장소1입니댜</span>' + '</a>' + '</div>',
+        latlng: new daum.maps.LatLng(33.450705, 126.570677)
+    },
+    {
+        content: '<div class="customoverlay">' + '<a href="#">' + '<span class="title">장소2에요</span>' + '</a>' + '</div>',
+        latlng: new daum.maps.LatLng(33.450936, 126.569477)
+    },
+    {
+        content: '<div class="customoverlay">' + '<a href="#">' + '<span class="title">장소3</span>' + '</a>' + '</div>',
+        latlng: new daum.maps.LatLng(33.450879, 126.569940)
+    },
+    {
+        content: '<div class="customoverlay">' + '<a href="#">' + '<span class="title">장소4다</span>' + '</a>' + '</div>',
+        latlng: new daum.maps.LatLng(33.451393, 126.570738)
+    }
+];
+
+// 마커 이미지의 이미지 주소입니다
+var imageSrc = "http://image.club5678.com/imgs/ilheayo_job/img01/ico_map_location.png"
+	imageOption = {offset: new daum.maps.Point(16, 78)}; // 마커이미지의 옵션입니다. 마커의 좌표와 일치시킬 이미지 안에서의 좌표를 설정합니다.
+
+for (var i = 0; i < positions.length; i ++) {
+
+    // 마커 이미지의 이미지 크기 입니다
+    var imageSize = new daum.maps.Size(39, 41);
+
+    // 마커 이미지를 생성합니다
+    var markerImage = new daum.maps.MarkerImage(imageSrc, imageSize, imageOption);
+
+    // 마커를 생성합니다
+    var marker = new daum.maps.Marker({
+        map: map, // 마커를 표시할 지도
+        position: positions[i].latlng, // 마커를 표시할 위치
+        image : markerImage // 마커 이미지
+    });
+
+	// 커스텀 오버레이를 생성합니다
+	var customOverlay = new daum.maps.CustomOverlay({
+		map: map,
+		position: positions[i].latlng,
+		content : positions[i].content,
+		yAnchor: 1
+	});
+}
+
+// 지도 확대, 축소 컨트롤에서 확대 버튼을 누르면 호출되어 지도를 확대하는 함수입니다
+function zoomIn() {
+    map.setLevel(map.getLevel() - 1);
+}
+
+// 지도 확대, 축소 컨트롤에서 축소 버튼을 누르면 호출되어 지도를 확대하는 함수입니다
+function zoomOut() {
+    map.setLevel(map.getLevel() + 1);
+}
+</script>
+</html>
